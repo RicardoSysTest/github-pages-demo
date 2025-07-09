@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppiins',sans-serif;
+}
+
+.showcase{
+    position: absolute;
+    right: 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111;
+    color: #fff;
+    z-index: 2;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.3rem 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+header::before{
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background-color: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(50px);
+    z-index: -1;
+}
+
+
+header::after{
+    content:'';
+    position: absolute;
+    top: 0;
+    left: -100;
+    width: 100%;
+    height:100%;
+    background: linear-gradient(90deg, transparent,rgba(0,0,0,.4), transparent);
+    transition: .5s;
+}
+
+.header:hover::after{
+    left: 100%;
+}
+
+.logo img{
+    width: 100px;
+    border-radius: 20%;
+    margin-right: 0px;
+}
+
+.navbar a{
+    font-size: 1.15rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5rem;
+}
+
+#check{
+    display: none;
+}
+
+
+.icons{
+    z-index: 120;
+    position: absolute;
+    right: 10%;
+    font-size: 2.8rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+
+.showcase video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /*background: #00A3E1;
+    mix-blend-mode: overlay;*/
+}
+
+.text{
+    position: relative;
+    z-index: 10;
+}
+
+.text h2{
+    font-size: 5em;
+    font-weight: 800;
+    line-height: 1em;
+    text-transform: uppercase;
+}
+
+.text h3{
+    font-size: 4em;
+    font-weight: 700;
+    line-height: 1em;
+    text-transform: uppercase;
+}
+
+.text p{
+    font-size: 1.6em;
+    margin: 20px 0;
+    font-weight: 400;
+    max-width: 700px;
+}
+
+.text a{
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 500;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 30px;
+    text-decoration: none;
+    color: #111;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.text a:hover{
+    letter-spacing: 6px;
+}
+
+.social{
+    position: absolute;
+    bottom: 50px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social li{
+    list-style: none;
+    margin-right: 20px;
+}
+
+.social li a{
+    display: inline-block;
+    filter: invert(1);
+    margin-right: 30px;
+    transform: scale(3);
+    transition: 0.5s;
+}
+
+.social li a:hover{
+    transform: scale(3) translateY(-15px);
+}
+
+.social li a:visited{
+    color: #000;
+}
+
+/*Meadia Query for Responsive Navbar*/
+@media (max-width: 992px){
+    .showcase, header{
+        padding: test system;
+    }
+    .text h2{
+        font-size: 3em;
+    }
+
+    .text h3{
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 768px){
+    .icons{
+        display: inline-flex;
+    }
+
+    #check:checked~.icons #menu-icon{
+        display: none;
+    }
+
+    .icons #close-icon{
+        display: none;
+    }
+
+    #check:checked~.icons #close-icon{
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: rgba(0, 0, 0, .1);
+        backdrop-filter: blur(50px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .1);
+        overflow: hidden;
+        transition: 0.3s;
+    }
+
+    #check:checked~.navbar{
+        height: 50rem;
+    }
+
+    .navbar a{
+        display: block;
+        font-size: 1.8rem;
+        margin: 2.5rem 0;
+        text-align: center;
+        transform: translateY(-50px);
+        opacity: 0;
+        transition: .3s ease;
+    }
+
+    #check:checked~.navbar a{
+        transform: translateY(0);
+        opacity: 1;
+        transition-delay: calc(.15s * var(--i));
+    }
+}
